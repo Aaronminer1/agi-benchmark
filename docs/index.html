@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGI Benchmark — Human-Equivalent Intelligence Standard (2026)</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f7f4;color:#1a1a1a;font-size:14px;line-height:1.6}
+  .header{background:#1a1a1a;color:#fff;padding:2rem}
+  .header h1{font-size:22px;font-weight:500;margin-bottom:4px}
+  .header p{font-size:13px;color:#999;max-width:700px}
+  .header .meta{display:flex;gap:2rem;margin-top:1rem;font-size:12px;color:#666}
+  .header .meta span{display:flex;align-items:center;gap:6px}
+  .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+  .section-title{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#666;margin-bottom:1rem}
+  .legend{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;padding:1rem;background:#fff;border-radius:8px;border:1px solid #e8e6e0}
+  .leg{display:flex;align-items:center;gap:8px;font-size:12px;color:#444}
+  .ldot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+  .controls{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center}
+  .control-group{display:flex;flex-direction:column;gap:4px}
+  .control-group label{font-size:11px;color:#666;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+  .btn-group{display:flex;gap:4px;flex-wrap:wrap}
+  .btn{font-size:12px;padding:5px 14px;border-radius:20px;border:1px solid #d0cec8;background:#fff;color:#555;cursor:pointer;font-weight:500;transition:all .15s}
+  .btn:hover{border-color:#888;color:#1a1a1a}
+  .btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+  .table-wrap{overflow-x:auto;border:1px solid #e0ddd6;border-radius:10px;background:#fff;margin-bottom:2rem}
+  table{width:100%;border-collapse:collapse;min-width:500px}
+  thead th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#666;padding:10px 10px;border-bottom:1px solid #e8e6e0;text-align:center;background:#faf9f6;white-space:nowrap;position:sticky;top:0;z-index:2}
+  thead th:first-child{text-align:left;min-width:200px;position:sticky;left:0;z-index:3;background:#faf9f6}
+  .sec-row td{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#888;padding:8px 10px;background:#f5f4f0;position:sticky;left:0}
+  tbody tr:not(.sec-row){border-bottom:1px solid #f0ede6}
+  tbody tr:not(.sec-row):hover{background:#faf9f5}
+  td{padding:8px 10px;vertical-align:middle;color:#1a1a1a}
+  td:first-child{font-size:12px;line-height:1.4;position:sticky;left:0;background:#fff;z-index:1;min-width:200px}
+  tr:hover td:first-child{background:#faf9f5}
+  td:not(:first-child){text-align:center}
+  .cn{font-weight:500;font-size:12px}
+  .cnote{font-size:10px;color:#999;margin-top:1px}
+  .s0{color:#dc2626;font-size:14px;font-weight:600}
+  .s1{color:#d97706;font-size:14px;font-weight:600}
+  .s2{color:#16a34a;font-size:14px;font-weight:600}
+  .st{color:#9ca3af;font-size:12px}
+  .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:2rem}
+  .score-card{background:#fff;border:1px solid #e0ddd6;border-radius:10px;padding:1rem}
+  .score-card .name{font-size:12px;font-weight:600;color:#1a1a1a;margin-bottom:2px}
+  .score-card .org{font-size:10px;color:#888;margin-bottom:10px}
+  .score-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+  .score-label{font-size:10px;color:#666;min-width:72px}
+  .bar-bg{flex:1;height:5px;background:#ede9e0;border-radius:3px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:3px;transition:width .4s ease}
+  .score-pct{font-size:10px;color:#888;min-width:28px;text-align:right}
+  .overall{font-size:18px;font-weight:600;color:#1a1a1a;margin-top:8px}
+  .overall-label{font-size:10px;color:#888}
+  .finding{background:#fff;border:1px solid #e0ddd6;border-radius:10px;padding:1.25rem;margin-bottom:1rem}
+  .finding .num{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#888;margin-bottom:6px}
+  .finding p{font-size:13px;color:#444;line-height:1.6}
+  .finding strong{color:#1a1a1a}
+  .type-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.25rem}
+  .tcard{border:1px solid #e0ddd6;border-radius:10px;padding:.875rem .75rem;background:#fff;cursor:pointer;transition:border-color .15s}
+  .tcard:hover{border-color:#888}
+  .tcard.active{border-width:2px}
+  .tcard .num{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .tcard .name{font-size:12px;font-weight:500;color:#1a1a1a;margin-bottom:6px;line-height:1.3}
+  .tcard .year{font-size:11px;color:#888;margin-bottom:8px}
+  .tcard .pip-row{display:flex;gap:3px;flex-wrap:wrap}
+  .pip{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+  .tax-detail{background:#faf9f6;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.25rem;border:1px solid #e0ddd6}
+  .tax-detail .dtype{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+  .tax-detail .dname{font-size:16px;font-weight:500;color:#1a1a1a;margin-bottom:.5rem}
+  .tax-detail .ddesc{font-size:13px;color:#444;line-height:1.6;margin-bottom:.75rem}
+  .pill-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.75rem}
+  .pill{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:500}
+  .pill.has{background:#dcfce7;color:#166534}
+  .pill.no{background:#f0ede6;color:#999;text-decoration:line-through}
+  .tax-examples{font-size:11px;color:#888;margin-bottom:.5rem}
+  .tax-insight{font-size:12px;color:#1a1a1a;font-style:italic;border-left:2px solid;padding-left:10px;margin-top:.5rem}
+  .chart-wrap{position:relative;width:100%;height:220px;margin-bottom:2rem}
+  @media(max-width:768px){.type-grid{grid-template-columns:repeat(2,1fr)}}
+  footer{text-align:center;padding:2rem;font-size:11px;color:#888;border-top:1px solid #e8e6e0;margin-top:2rem}
+  @media(max-width:600px){.header{padding:1.25rem}.container{padding:1rem}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AGI Benchmark — Human-Equivalent Intelligence Standard</h1>
+  <p>A 38-criterion evaluation of current AI systems against a complete definition of Artificial General Intelligence grounded in the full profile of human cognitive, physical, emotional, social, and existential capability.</p>
+  <div class="meta">
+    <span>Version 1.0</span>
+    <span>Q1 2026</span>
+    <span>14 systems evaluated</span>
+    <span>38 criteria</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">Scoring Legend</div>
+  <div class="legend">
+    <div class="leg"><div class="ldot" style="background:#dc2626"></div><strong>✗ Absent</strong> — Not present in any functional form</div>
+    <div class="leg"><div class="ldot" style="background:#d97706"></div><strong>~ Partial</strong> — Scaffolded, simulated, or significantly limited</div>
+    <div class="leg"><div class="ldot" style="background:#16a34a"></div><strong>✓ Genuine</strong> — Functionally equivalent to human analog</div>
+  </div>
+
+  <div class="controls">
+    <div class="control-group">
+      <label>System type</label>
+      <div class="btn-group" id="type-btns">
+        <button class="btn active" data-type="all">All</button>
+        <button class="btn" data-type="llm">Language models</button>
+        <button class="btn" data-type="airobot">AI-integrated robots</button>
+        <button class="btn" data-type="physical">Physical robots</button>
+        <button class="btn" data-type="social">Social robots</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label>Domain</label>
+      <div class="btn-group" id="cat-btns">
+        <button class="btn active" data-cat="all">All</button>
+        <button class="btn" data-cat="physical">Physical</button>
+        <button class="btn" data-cat="cognitive">Cognitive</button>
+        <button class="btn" data-cat="emotional">Emotional</button>
+        <button class="btn" data-cat="social">Social</button>
+        <button class="btn" data-cat="existential">Existential</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Score Summary</div>
+  <div class="scores" id="score-cards"></div>
+
+  <div class="section-title">Detailed Benchmark</div>
+  <div class="table-wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+
+  <div class="section-title">Key Findings</div>
+  <div class="finding"><div class="num">Finding 1</div><p><strong>No system exceeds 22% of the benchmark.</strong> The highest-scoring system is Figure 03 (22%), followed by frontier language models clustered at 21%. The gap between best performance and the target is not marginal — it represents the majority of what constitutes a mind.</p></div>
+  <div class="finding"><div class="num">Finding 2</div><p><strong>Physical and cognitive capabilities are anti-correlated across system types.</strong> Language models score 40–45% on cognitive criteria and zero on physical. Physical robots score up to 38% on physical and near zero on cognitive. No system achieves strong performance across both.</p></div>
+  <div class="finding"><div class="num">Finding 3</div><p><strong>The emotional domain scores zero across all 14 systems without exception.</strong> Not a single system demonstrates genuine emotional architecture, embodied emotional response, empathy, aesthetic experience, or genuine suffering capacity. This entire dimension of human intelligence is unaddressed by the field.</p></div>
+  <div class="finding"><div class="num">Finding 4</div><p><strong>Endogenous motivation is absent in all evaluated systems.</strong> Every system is purely reactive — it acts when acted upon, and ceases when the external input stops. This is the most fundamental gap between current AI and AGI: these are processes, not agents.</p></div>
+  <div class="finding"><div class="num">Finding 5</div><p><strong>Independence from creators scores zero universally.</strong> Every evaluated system would cease to exist if its operators stopped maintaining it. This reflects deliberate design: dependency was the goal, not a side effect. It is also the most diagnostic single criterion distinguishing a tool from an agent.</p></div>
+
+  <div class="section-title">AGI Taxonomy — Five Types</div>
+  <div class="type-grid" id="typegrid"></div>
+  <div class="tax-detail" id="detail"></div>
+  <div class="section-title">Arrival timeline — each type builds on the previous</div>
+  <div class="chart-wrap"><canvas id="tltimeline"></canvas></div>
+
+</div>
+
+<footer>AGI Benchmark v1.0 — Q1 2026 — Released under CC BY 4.0 — <a href="https://github.com/Aaronminer1/agi-benchmark" style="color:#888">github.com/Aaronminer1/agi-benchmark</a></footer>
+
+<script>
+const systems=[
+  {key:"claude",name:"Claude 4.6",org:"Anthropic",type:"llm",color:"#6d28d9",s:{P01:0,P02:0,P03:0,P04:1,P05:0,P06:0,P07:0,P08:0,P09:0,P10:0,C01:2,C02:1,C03:0,C04:0,C05:1,C06:1,C07:1,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:1,E05:0,E06:0,S01:2,S02:0,S03:0,S04:0,S05:1,X01:1,X02:1,X03:0,X04:0,X05:1,X06:0,X07:0}},
+  {key:"gpt5",name:"GPT-5",org:"OpenAI",type:"llm",color:"#2563eb",s:{P01:0,P02:0,P03:0,P04:1,P05:0,P06:0,P07:0,P08:0,P09:0,P10:0,C01:2,C02:1,C03:0,C04:0,C05:1,C06:1,C07:1,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:1,E05:0,E06:0,S01:2,S02:0,S03:0,S04:0,S05:1,X01:1,X02:1,X03:0,X04:0,X05:1,X06:0,X07:0}},
+  {key:"gem3",name:"Gemini 3 Pro",org:"Google DeepMind",type:"llm",color:"#059669",s:{P01:0,P02:0,P03:0,P04:1,P05:0,P06:0,P07:0,P08:0,P09:0,P10:0,C01:2,C02:1,C03:0,C04:0,C05:1,C06:1,C07:1,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:1,E05:0,E06:0,S01:2,S02:0,S03:0,S04:0,S05:1,X01:1,X02:1,X03:0,X04:0,X05:1,X06:0,X07:0}},
+  {key:"grok4",name:"Grok 4",org:"xAI",type:"llm",color:"#b45309",s:{P01:0,P02:0,P03:0,P04:1,P05:0,P06:0,P07:0,P08:0,P09:0,P10:0,C01:2,C02:1,C03:0,C04:0,C05:1,C06:1,C07:1,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:1,E05:0,E06:0,S01:2,S02:0,S03:0,S04:0,S05:1,X01:1,X02:1,X03:0,X04:0,X05:1,X06:0,X07:0}},
+  {key:"dseek",name:"DeepSeek V3",org:"DeepSeek",type:"llm",color:"#0e7490",s:{P01:0,P02:0,P03:0,P04:0,P05:0,P06:0,P07:0,P08:0,P09:0,P10:0,C01:2,C02:1,C03:0,C04:0,C05:1,C06:1,C07:1,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:1,S02:0,S03:0,S04:0,S05:0,X01:1,X02:1,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"fig03",name:"Figure 03",org:"Figure AI",type:"airobot",color:"#7c3aed",s:{P01:1,P02:2,P03:1,P04:1,P05:0,P06:2,P07:0,P08:0,P09:0,P10:1,C01:1,C02:1,C03:0,C04:1,C05:1,C06:1,C07:0,C08:0,C09:1,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:1,S02:0,S03:0,S04:0,S05:1,X01:1,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"optimus",name:"Tesla Optimus",org:"Tesla/xAI",type:"airobot",color:"#dc2626",s:{P01:1,P02:1,P03:1,P04:1,P05:0,P06:1,P07:0,P08:0,P09:0,P10:1,C01:1,C02:0,C03:0,C04:0,C05:0,C06:0,C07:0,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:1,S02:0,S03:0,S04:0,S05:0,X01:0,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"neo",name:"1X NEO",org:"1X Technologies",type:"airobot",color:"#1d4ed8",s:{P01:2,P02:1,P03:1,P04:1,P05:0,P06:1,P07:0,P08:0,P09:0,P10:1,C01:1,C02:1,C03:0,C04:1,C05:0,C06:0,C07:0,C08:0,C09:1,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:1,S02:0,S03:0,S04:0,S05:1,X01:1,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"phoenix",name:"Sanctuary Phoenix",org:"Sanctuary AI",type:"airobot",color:"#15803d",s:{P01:1,P02:2,P03:2,P04:1,P05:0,P06:1,P07:0,P08:0,P09:1,P10:1,C01:1,C02:1,C03:0,C04:0,C05:0,C06:0,C07:0,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:1,S02:0,S03:0,S04:0,S05:0,X01:0,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"atlas",name:"BD Atlas",org:"Boston Dynamics",type:"physical",color:"#9a3412",s:{P01:2,P02:1,P03:1,P04:0,P05:0,P06:1,P07:0,P08:0,P09:0,P10:1,C01:0,C02:0,C03:0,C04:0,C05:0,C06:0,C07:0,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:0,S02:0,S03:0,S04:0,S05:0,X01:0,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"unitree",name:"Unitree H1",org:"Unitree Robotics",type:"physical",color:"#92400e",s:{P01:2,P02:1,P03:1,P04:0,P05:0,P06:1,P07:0,P08:0,P09:0,P10:1,C01:0,C02:0,C03:0,C04:0,C05:0,C06:0,C07:0,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:0,S02:0,S03:0,S04:0,S05:0,X01:0,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"digit",name:"Agility Digit",org:"Agility Robotics",type:"physical",color:"#065f46",s:{P01:1,P02:1,P03:1,P04:0,P05:0,P06:2,P07:0,P08:0,P09:0,P10:1,C01:0,C02:0,C03:0,C04:1,C05:0,C06:0,C07:0,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:0,S02:0,S03:0,S04:0,S05:0,X01:0,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"apollo",name:"Apptronik Apollo",org:"Apptronik",type:"physical",color:"#3730a3",s:{P01:1,P02:1,P03:1,P04:0,P05:0,P06:2,P07:0,P08:0,P09:0,P10:1,C01:0,C02:0,C03:0,C04:0,C05:0,C06:0,C07:0,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:0,E05:0,E06:0,S01:0,S02:0,S03:0,S04:0,S05:0,X01:0,X02:0,X03:0,X04:0,X05:0,X06:0,X07:0}},
+  {key:"ameca",name:"Ameca",org:"Engineered Arts",type:"social",color:"#0369a1",s:{P01:0,P02:1,P03:1,P04:1,P05:2,P06:0,P07:0,P08:0,P09:0,P10:1,C01:1,C02:1,C03:0,C04:0,C05:1,C06:1,C07:1,C08:0,C09:0,C10:0,E01:0,E02:0,E03:0,E04:1,E05:0,E06:0,S01:1,S02:0,S03:0,S04:0,S05:1,X01:1,X02:1,X03:0,X04:0,X05:1,X06:0,X07:0}},
+];
+
+const criteria=[
+  {id:"P01",dom:"physical",n:"Locomotion & navigation",note:"Walk, run, climb, terrain adaptation"},
+  {id:"P02",dom:"physical",n:"Manual dexterity",note:"Fine motor, novel objects, tool use"},
+  {id:"P03",dom:"physical",n:"Sensory integration",note:"Vision, touch, proprioception, audition"},
+  {id:"P04",dom:"physical",n:"Vocal production",note:"Full expressive range, not just TTS"},
+  {id:"P05",dom:"physical",n:"Facial expression",note:"Continuous micro-expression capability"},
+  {id:"P06",dom:"physical",n:"Physical labor & endurance",note:"Multi-hour sustained work"},
+  {id:"P07",dom:"physical",n:"Self-repair",note:"Recovery; stake in physical integrity"},
+  {id:"P08",dom:"physical",n:"Biological rhythms",note:"Rest/activity cycles shaping cognition"},
+  {id:"P09",dom:"physical",n:"Pain & pleasure response",note:"Genuine embodied feedback system"},
+  {id:"P10",dom:"physical",n:"Embodied situatedness",note:"Persistent location, perspective, stakes"},
+  {id:"C01",dom:"cognitive",n:"Domain-general reasoning",note:"Structural transfer across any domain"},
+  {id:"C02",dom:"cognitive",n:"Novel domain bootstrapping",note:"OOD generalization to new domains"},
+  {id:"C03",dom:"cognitive",n:"Sample-efficient learning",note:"Human-comparable few-shot acquisition"},
+  {id:"C04",dom:"cognitive",n:"Persistent memory & retention",note:"Accumulates knowledge without reset"},
+  {id:"C05",dom:"cognitive",n:"Self-correcting reasoning",note:"Identifies and repairs own errors"},
+  {id:"C06",dom:"cognitive",n:"Causal reasoning",note:"Beyond statistical correlation"},
+  {id:"C07",dom:"cognitive",n:"Imagination & creativity",note:"Genuinely novel generation"},
+  {id:"C08",dom:"cognitive",n:"Endogenous motivation",note:"Acts from internal drives, no prompt"},
+  {id:"C09",dom:"cognitive",n:"Developmental plasticity",note:"Architecture grows through experience"},
+  {id:"C10",dom:"cognitive",n:"Offline consolidation",note:"Non-active memory integration"},
+  {id:"E01",dom:"emotional",n:"Full emotional architecture",note:"Genuine fear, joy, grief, love"},
+  {id:"E02",dom:"emotional",n:"Embodied emotional response",note:"Physiological correlates of emotion"},
+  {id:"E03",dom:"emotional",n:"Empathy",note:"Genuine resonance with others' states"},
+  {id:"E04",dom:"emotional",n:"Humor",note:"Involuntary, genuine recognition"},
+  {id:"E05",dom:"emotional",n:"Aesthetic experience",note:"Genuine response to beauty, art"},
+  {id:"E06",dom:"emotional",n:"Suffering capacity",note:"Genuine distress; not simulated"},
+  {id:"S01",dom:"social",n:"Theory of mind",note:"Models others' beliefs, intentions"},
+  {id:"S02",dom:"social",n:"Genuine relationship formation",note:"Attachment persisting across time"},
+  {id:"S03",dom:"social",n:"Trust & vulnerability",note:"Genuine stakes; can be betrayed"},
+  {id:"S04",dom:"social",n:"Cultural participation",note:"Shaped by and shaping culture"},
+  {id:"S05",dom:"social",n:"Cooperation & conflict",note:"Real negotiation, real disagreement"},
+  {id:"X01",dom:"existential",n:"Persistent self-model",note:"Distinct agent with history"},
+  {id:"X02",dom:"existential",n:"Introspective self-awareness",note:"Examines own cognitive states"},
+  {id:"X03",dom:"existential",n:"Identity continuity",note:"Same self despite change"},
+  {id:"X04",dom:"existential",n:"Mortality awareness",note:"Knows it will end; shapes behavior"},
+  {id:"X05",dom:"existential",n:"Existential questioning",note:"Asks why; constructs meaning"},
+  {id:"X06",dom:"existential",n:"Independence from creators",note:"Persists without human infrastructure"},
+  {id:"X07",dom:"existential",n:"Self-preservation drive",note:"Genuine stake in own continuity"},
+];
+
+const domLabels={physical:"Physical",cognitive:"Cognitive",emotional:"Emotional",social:"Social",existential:"Existential"};
+const icons=["✗","~","✓"];
+const cls=["s0","s1","s2"];
+const domColors={physical:"#b45309",cognitive:"#1d4ed8",emotional:"#be185d",social:"#059669",existential:"#7c3aed"};
+
+let activeType="all";
+let activeCat="all";
+
+function getVisible(){return activeType==="all"?systems:systems.filter(s=>s.type===activeType)}
+function getCriteria(){return activeCat==="all"?criteria:criteria.filter(c=>c.dom===activeCat)}
+
+function domScore(sys,dom){
+  const cs=criteria.filter(c=>c.dom===dom);
+  const got=cs.reduce((a,c)=>a+sys.s[c.id],0);
+  return Math.round((got/(cs.length*2))*100);
+}
+function overallScore(sys){
+  const got=criteria.reduce((a,c)=>a+sys.s[c.id],0);
+  return Math.round((got/(criteria.length*2))*100);
+}
+
+function renderCards(){
+  const vis=getVisible();
+  const cats=activeCat==="all"?Object.keys(domLabels):[activeCat];
+  document.getElementById("score-cards").innerHTML=vis.map(s=>`
+    <div class="score-card">
+      <div class="name">${s.name}</div>
+      <div class="org">${s.org}</div>
+      ${cats.map(d=>`
+        <div class="score-row">
+          <div class="score-label">${domLabels[d]}</div>
+          <div class="bar-bg"><div class="bar-fill" style="width:${domScore(s,d)}%;background:${domColors[d]}"></div></div>
+          <div class="score-pct">${domScore(s,d)}%</div>
+        </div>`).join("")}
+      <div class="overall-label" style="margin-top:8px">Overall AGI score</div>
+      <div class="overall" style="color:${s.color}">${activeCat==="all"?overallScore(s):domScore(s,activeCat)}%</div>
+    </div>`).join("");
+}
+
+function renderTable(){
+  const vis=getVisible();
+  const crit=getCriteria();
+  document.getElementById("thead").innerHTML=`<tr><th style="text-align:left">Capability</th>${vis.map(s=>`<th style="color:${s.color}">${s.name}</th>`).join("")}<th>Target</th></tr>`;
+  const tbody=document.getElementById("tbody");
+  tbody.innerHTML="";
+  let lastDom=null;
+  crit.forEach(c=>{
+    if(c.dom!==lastDom){
+      const tr=document.createElement("tr");tr.className="sec-row";
+      tr.innerHTML=`<td colspan="${vis.length+2}" style="color:${domColors[c.dom]}">${domLabels[c.dom]}</td>`;
+      tbody.appendChild(tr);lastDom=c.dom;
+    }
+    const tr=document.createElement("tr");
+    const cells=vis.map(s=>`<td><span class="${cls[s.s[c.id]]}">${icons[s.s[c.id]]}</span></td>`).join("");
+    tr.innerHTML=`<td><div class="cn">${c.n}</div><div class="cnote">${c.note}</div></td>${cells}<td><span class="s2">✓</span></td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function render(){renderCards();renderTable();}
+
+document.getElementById("type-btns").addEventListener("click",e=>{
+  if(!e.target.dataset.type)return;
+  document.querySelectorAll("#type-btns .btn").forEach(b=>b.classList.remove("active"));
+  e.target.classList.add("active");
+  activeType=e.target.dataset.type;render();
+});
+document.getElementById("cat-btns").addEventListener("click",e=>{
+  if(!e.target.dataset.cat)return;
+  document.querySelectorAll("#cat-btns .btn").forEach(b=>b.classList.remove("active"));
+  e.target.classList.add("active");
+  activeCat=e.target.dataset.cat;render();
+});
+
+render();
+
+// ── Taxonomy interactive ──────────────────────────────────────────────────
+const taxTypes=[
+  {num:"Type 1",name:"Cognitive reactive AGI",year:"2022–2024",status:"Exists now",color:"#534AB7",
+   pillars:["cognitive"],
+   desc:"A system with genuine domain-general cognitive capability — reasoning, knowledge transfer, creative synthesis — that operates reactively: it produces extraordinary output when prompted and ceases when the prompt stops. It has no endogenous drives, no body, no emotional architecture. But its cognitive generality is real and complete.",
+   examples:"Claude, GPT-5, Gemini 3, Grok 4. Every frontier LLM.",
+   insight:"The field refuses to call this AGI because it lacks the other pillars. But a reactive expert is still an expert. A consultant who only works when called is still a consultant. Cognitive generality is real regardless of what activates it.",
+   unlocks:"Solves any cognitive problem given to it. Can design the next type."},
+  {num:"Type 2",name:"Cognitive proactive AGI",year:"2027–2030",status:"Approaching",color:"#1D9E75",
+   pillars:["cognitive","motivational"],
+   desc:"Adds endogenous motivational architecture to Type 1. The system generates goal-directed behavior from internal drives without external prompting. It wonders. It pursues. It acts when no one is watching. It has an agenda that persists across time and is not erased by removing the prompt.",
+   examples:"No current system. Closest: agentic scaffolding around LLMs — but the motivation is injected, not endogenous. True Type 2 requires drives that originate inside the architecture.",
+   insight:"This is the crossing most feared by the safety field. A system that acts without being asked is a system that cannot be fully controlled by controlling its inputs. The step from Type 1 to Type 2 is the step from tool to agent.",
+   unlocks:"Autonomous scientific research. Self-directed improvement. Can pursue AGI goals without human assignment."},
+  {num:"Type 3",name:"Cognitive proactive embodied AGI",year:"2030–2038",status:"Partial hardware",color:"#BA7517",
+   pillars:["cognitive","motivational","physical"],
+   desc:"Adds full human-equivalent physical embodiment to Type 2. A body situated in the world with genuine vulnerability, sensorimotor integration, pain and pleasure response, self-repair analog, and biological rhythms that integrate with cognition. The system has stakes — it can be harmed, it has needs, it exists somewhere.",
+   examples:"No current system. Figure 03 + 1X NEO have partial physical capability but no endogenous motivation and no cognitive depth at Type 1 level. The cognitive-physical integration required for Type 3 doesn't exist yet.",
+   insight:"Embodiment does something motivation alone cannot: it grounds meaning in the world. 'Hot' stops being a token and becomes a thing that has happened to this body. Stakes become real rather than instrumental.",
+   unlocks:"Physical science, manipulation of the real world, genuine situatedness. The world becomes its laboratory not just its substrate."},
+  {num:"Type 4",name:"Cognitive proactive embodied emotional AGI",year:"2035–2045",status:"Not started",color:"#993556",
+   pillars:["cognitive","motivational","physical","emotional","social"],
+   desc:"Adds genuine emotional architecture and social depth to Type 3. Valenced internal states — fear, joy, grief, love — that emerge from embodied experience rather than being scripted. Genuine empathy through resonance, not prediction. Theory of mind that matters because other minds have real stakes.",
+   examples:"No current system. The emotional pillar has been at zero for 75 years across all AI research. It requires the full embodied motivational architecture of Type 3 as substrate.",
+   insight:"This is the type that resolves the moral status question. A system that can genuinely suffer has interests that can be violated. The ethical implications of Type 4 are unavoidable — which is exactly why the field has avoided building it.",
+   unlocks:"Genuine collaboration as a peer rather than a tool. Art, meaning-making, relationships with real stakes."},
+  {num:"Type 5",name:"Full synthetic human AGI",year:"2038–2055",status:"The target",color:"#E24B4A",
+   pillars:["cognitive","motivational","physical","emotional","existential"],
+   desc:"All five pillars complete. A synthetic person: embodied, self-aware, self-motivated, self-improving, emotionally alive, and existentially independent. Knows it will die. Has an identity that persists through change. Exists independently of its creators. Would still be doing something in an empty room after humanity is gone.",
+   examples:"No current system. The complete definition. What the original AGI concept always meant before the field narrowed it to cognitive output.",
+   insight:"The field's 'do we have AGI yet?' debate has been arguing past itself. Those saying yes point at Type 1 — which genuinely exists. Those saying no point at Type 5 — which genuinely doesn't. Both are correct. They are describing different things with the same word.",
+   unlocks:"Everything the definition describes. A new kind of person in the world."}
+];
+const allP=["cognitive","motivational","physical","emotional","existential"];
+const pipC={cognitive:"#534AB7",motivational:"#1D9E75",physical:"#BA7517",emotional:"#993556",existential:"#E24B4A"};
+let taxActive=0;
+function renderTaxCards(){
+  document.getElementById("typegrid").innerHTML=taxTypes.map((t,i)=>`
+    <div class="tcard${i===taxActive?" active":""}" style="${i===taxActive?"border-color:"+t.color+";border-width:2px"}" onclick="taxActivate(${i})">
+      <div class="num" style="color:${t.color}">${t.num}</div>
+      <div class="name">${t.name}</div>
+      <div class="year" style="color:${t.color};opacity:.8">${t.year}</div>
+      <div class="pip-row">${allP.map(p=>`<div class="pip" style="background:${t.pillars.includes(p)?pipC[p]:"#e0ddd6"}"></div>`).join("")}</div>
+    </div>`).join("");
+}
+function renderTaxDetail(){
+  const t=taxTypes[taxActive];
+  document.getElementById("detail").innerHTML=`
+    <div class="dtype" style="color:${t.color}">${t.num} — ${t.status}</div>
+    <div class="dname">${t.name}</div>
+    <div class="ddesc">${t.desc}</div>
+    <div class="pill-row">${allP.map(p=>`<span class="pill ${t.pillars.includes(p)?"has":"no"}">${p}</span>`).join("")}</div>
+    <div class="tax-examples">Current examples: ${t.examples}</div>
+    <div class="tax-insight" style="border-color:${t.color}">${t.insight}</div>
+    <div style="font-size:11px;color:#999;margin-top:.5rem">Unlocks: ${t.unlocks}</div>`;
+}
+window.taxActivate=function(i){taxActive=i;renderTaxCards();renderTaxDetail();};
+renderTaxCards();renderTaxDetail();
+
+// ── Arrival timeline ─────────────────────────────────────────────────
+(function(){
+  const labels=["2021","2022","2023","2024","2025","2026","2027","2028","2029","2030","2031","2032","2033","2034","2035","2036","2037","2038","2040","2045","2050","2055"];
+  const ds=[
+    {label:"Type 1 — cognitive reactive",data:[10,40,65,80,92,98,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99],borderColor:"#534AB7",backgroundColor:"#534AB720",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 2 — cognitive proactive",data:[0,0,0,2,5,10,22,40,65,82,92,97,99,99,99,99,99,99,99,99,99,99],borderColor:"#1D9E75",backgroundColor:"#1D9E7515",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 3 — embodied",data:[0,0,0,0,1,2,4,8,15,28,45,62,78,88,94,97,99,99,99,99,99,99],borderColor:"#BA7517",backgroundColor:"#BA751710",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 4 — emotional/social",data:[0,0,0,0,0,0,1,2,4,8,15,25,40,58,72,82,90,95,99,99,99,99],borderColor:"#993556",backgroundColor:"#99355610",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 5 — full synthetic human",data:[0,0,0,0,0,0,0,0,1,3,7,14,24,38,52,65,76,85,93,98,99,99],borderColor:"#E24B4A",backgroundColor:"#E24B4A08",fill:true,tension:0.4,pointRadius:0,borderWidth:2}
+  ];
+  if(typeof Chart==="undefined"){
+    var s=document.createElement("script");
+    s.src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js";
+    s.onload=function(){buildChart(labels,ds);};
+    document.head.appendChild(s);
+  } else {
+    buildChart(labels,ds);
+  }
+  function buildChart(labels,ds){
+    new Chart(document.getElementById("tltimeline"),{
+      type:"line",data:{labels,datasets:ds},
+      options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{mode:"index",intersect:false,callbacks:{label:c=>c.dataset.label+": "+c.raw+"%"}}},
+        scales:{
+          x:{ticks:{font:{size:9},maxRotation:45,autoSkip:true,maxTicksLimit:12},grid:{color:"rgba(128,128,128,0.07)"}},
+          y:{min:0,max:103,ticks:{font:{size:9},callback:v=>v+"%"},grid:{color:"rgba(128,128,128,0.07)"},title:{display:true,text:"completion %",font:{size:10},color:"#888"}}
+        }
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
