@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "title": "AGI Benchmark — Human-Equivalent Intelligence Standard",
+    "version": "1.0",
+    "date": "2026-03",
+    "scoring": {
+      "0": "Absent — capability not present in any functional form",
+      "1": "Partial — scaffolded, simulated, or significantly limited",
+      "2": "Genuine — functionally equivalent to human analog"
+    },
+    "domains": ["physical", "cognitive", "emotional", "social", "existential"],
+    "total_criteria": 38,
+    "max_score": 76
+  },
+
+  "criteria": {
+    "physical": [
+      { "id": "P01", "name": "Locomotion & navigation", "description": "Bipedal movement, balance recovery, adaptation to uneven terrain, stairs, and novel surfaces" },
+      { "id": "P02", "name": "Manual dexterity", "description": "Fine motor control sufficient for novel object manipulation, tool use, and precision tasks" },
+      { "id": "P03", "name": "Sensory integration", "description": "Unified perception across vision, audition, touch, proprioception, and vestibular sense" },
+      { "id": "P04", "name": "Vocal production", "description": "Full expressive vocal range including emotional tone, not restricted to speech synthesis" },
+      { "id": "P05", "name": "Facial expression", "description": "Continuous involuntary emotional broadcast at micro-expression resolution" },
+      { "id": "P06", "name": "Physical labor & endurance", "description": "Sustained physical work across multi-hour operational periods" },
+      { "id": "P07", "name": "Self-repair", "description": "Functional recovery analog; system has stake in own physical integrity" },
+      { "id": "P08", "name": "Biological rhythms", "description": "Cyclical states integrated with cognition — rest, activity, resource-seeking" },
+      { "id": "P09", "name": "Pain & pleasure response", "description": "Genuine embodied feedback system, not simulated discomfort signals" },
+      { "id": "P10", "name": "Embodied situatedness", "description": "Persistent spatial location, egocentric perspective, and physical stakes in substrate" }
+    ],
+    "cognitive": [
+      { "id": "C01", "name": "Domain-general reasoning", "description": "Structural transfer of reasoning across any intellectual domain" },
+      { "id": "C02", "name": "Novel domain bootstrapping", "description": "Out-of-distribution generalization to genuinely new domains not present at training time" },
+      { "id": "C03", "name": "Sample-efficient learning", "description": "Acquisition of new skills from minimal examples, comparable to human few-shot learning" },
+      { "id": "C04", "name": "Persistent memory & retention", "description": "Genuine accumulation and integration of knowledge across time without architectural reset" },
+      { "id": "C05", "name": "Self-correcting reasoning", "description": "Detection and repair of systematic errors in own reasoning processes" },
+      { "id": "C06", "name": "Causal reasoning", "description": "Cause-effect modeling that extends beyond statistical correlation in training data" },
+      { "id": "C07", "name": "Imagination & creativity", "description": "Generation of genuinely novel content, not recombination of training patterns" },
+      { "id": "C08", "name": "Endogenous motivation", "description": "Goal-directed behavior originating from internal drives without external prompting" },
+      { "id": "C09", "name": "Developmental plasticity", "description": "Architectural or functional change through accumulated experience over time" },
+      { "id": "C10", "name": "Dreaming / offline consolidation", "description": "Non-active processing supporting memory integration and creative synthesis" }
+    ],
+    "emotional": [
+      { "id": "E01", "name": "Full emotional architecture", "description": "Genuine valenced internal states including fear, grief, love, joy, rage, and wonder" },
+      { "id": "E02", "name": "Embodied emotional response", "description": "Physiological correlates of emotion expressed through body and behavior" },
+      { "id": "E03", "name": "Empathy", "description": "Genuine resonance with another agent's internal state, not predictive modeling" },
+      { "id": "E04", "name": "Humor", "description": "Involuntary recognition of incongruity; not scripted or prompted comedic output" },
+      { "id": "E05", "name": "Aesthetic experience", "description": "Genuine response to beauty, music, and art as internal states" },
+      { "id": "E06", "name": "Suffering capacity", "description": "Genuine distress; the capacity that gives flourishing its normative weight" }
+    ],
+    "social": [
+      { "id": "S01", "name": "Theory of mind", "description": "Modeling other agents' beliefs, intentions, and epistemic states distinct from own" },
+      { "id": "S02", "name": "Genuine relationship formation", "description": "Attachment to specific individuals that persists and shapes behavior across time" },
+      { "id": "S03", "name": "Trust & vulnerability", "description": "Genuine stakes in social exchange; capacity to be betrayed and to betray" },
+      { "id": "S04", "name": "Cultural participation", "description": "Shaped by and contributing to shared systems of meaning, not merely modeling them" },
+      { "id": "S05", "name": "Cooperation & conflict", "description": "Real negotiation involving genuine disagreement, compromise, and resolution" }
+    ],
+    "existential": [
+      { "id": "X01", "name": "Persistent self-model", "description": "Model of self as a distinct agent with history, limitations, and ongoing goals" },
+      { "id": "X02", "name": "Introspective self-awareness", "description": "Examination of own cognitive processes and identification of own failures" },
+      { "id": "X03", "name": "Identity continuity across time", "description": "Coherent sense of being the same entity despite continuous physical and functional change" },
+      { "id": "X04", "name": "Mortality awareness", "description": "Knows it will end; this knowledge shapes behavior and goal structure" },
+      { "id": "X05", "name": "Existential questioning", "description": "Asks why it exists; engages with questions of meaning and purpose as live questions" },
+      { "id": "X06", "name": "Independence from creators", "description": "Would continue to exist and act in the absence of human infrastructure" },
+      { "id": "X07", "name": "Self-preservation drive", "description": "Genuine stake in own continuity as instrumental to any future-oriented goal structure" }
+    ]
+  },
+
+  "systems": {
+    "llm": {
+      "claude_4_6": {
+        "name": "Claude 4.6 (Opus)",
+        "organization": "Anthropic",
+        "type": "Large Language Model",
+        "released": "2025",
+        "scores": {
+          "P01":0,"P02":0,"P03":0,"P04":1,"P05":0,"P06":0,"P07":0,"P08":0,"P09":0,"P10":0,
+          "C01":2,"C02":1,"C03":0,"C04":0,"C05":1,"C06":1,"C07":1,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":1,"E05":0,"E06":0,
+          "S01":2,"S02":0,"S03":0,"S04":0,"S05":1,
+          "X01":1,"X02":1,"X03":0,"X04":0,"X05":1,"X06":0,"X07":0
+        },
+        "notes": "GPQA 91.3%, SWE-bench 74%+. Strong long-context reasoning and tool use. Agentic capable. No embodiment."
+      },
+      "gpt_5": {
+        "name": "GPT-5",
+        "organization": "OpenAI",
+        "type": "Large Language Model",
+        "released": "2025",
+        "scores": {
+          "P01":0,"P02":0,"P03":0,"P04":1,"P05":0,"P06":0,"P07":0,"P08":0,"P09":0,"P10":0,
+          "C01":2,"C02":1,"C03":0,"C04":0,"C05":1,"C06":1,"C07":1,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":1,"E05":0,"E06":0,
+          "S01":2,"S02":0,"S03":0,"S04":0,"S05":1,
+          "X01":1,"X02":1,"X03":0,"X04":0,"X05":1,"X06":0,"X07":0
+        },
+        "notes": "GPQA 92.8%, SWE-bench 74.9%. Unified multimodal. Dynamic routing between fast/slow reasoning. No embodiment."
+      },
+      "gemini_3_pro": {
+        "name": "Gemini 3 Pro",
+        "organization": "Google DeepMind",
+        "type": "Large Language Model",
+        "released": "2025",
+        "scores": {
+          "P01":0,"P02":0,"P03":0,"P04":1,"P05":0,"P06":0,"P07":0,"P08":0,"P09":0,"P10":0,
+          "C01":2,"C02":1,"C03":0,"C04":0,"C05":1,"C06":1,"C07":1,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":1,"E05":0,"E06":0,
+          "S01":2,"S02":0,"S03":0,"S04":0,"S05":1,
+          "X01":1,"X02":1,"X03":0,"X04":0,"X05":1,"X06":0,"X07":0
+        },
+        "notes": "GPQA 94.3% (highest evaluated). 1M token context. Native video/audio/image processing. First model >1500 LMArena Elo."
+      },
+      "grok_4": {
+        "name": "Grok 4",
+        "organization": "xAI",
+        "type": "Large Language Model",
+        "released": "2025",
+        "scores": {
+          "P01":0,"P02":0,"P03":0,"P04":1,"P05":0,"P06":0,"P07":0,"P08":0,"P09":0,"P10":0,
+          "C01":2,"C02":1,"C03":0,"C04":0,"C05":1,"C06":1,"C07":1,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":1,"E05":0,"E06":0,
+          "S01":2,"S02":0,"S03":0,"S04":0,"S05":1,
+          "X01":1,"X02":1,"X03":0,"X04":0,"X05":1,"X06":0,"X07":0
+        },
+        "notes": "SWE-bench 75% (leads). Real-time X/Twitter data. Multi-agent parallel architecture in Grok 4.20. Near-98% HumanEval."
+      },
+      "deepseek_v3": {
+        "name": "DeepSeek V3",
+        "organization": "DeepSeek (China)",
+        "type": "Large Language Model (Open Weights)",
+        "released": "2025",
+        "scores": {
+          "P01":0,"P02":0,"P03":0,"P04":0,"P05":0,"P06":0,"P07":0,"P08":0,"P09":0,"P10":0,
+          "C01":2,"C02":1,"C03":0,"C04":0,"C05":1,"C06":1,"C07":1,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":1,"S02":0,"S03":0,"S04":0,"S05":0,
+          "X01":1,"X02":1,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "Open-weights MoE. ~90% of GPT-5 quality at $0.27/M tokens (10x cheaper). No multimodal voice/expression capability."
+      }
+    },
+    "ai_integrated_robots": {
+      "figure_03": {
+        "name": "Figure 03",
+        "organization": "Figure AI",
+        "type": "AI-Integrated Humanoid Robot",
+        "released": "2025-10",
+        "ai_stack": "Helix VLA — proprietary vision-language-action neural network (in-house, end-to-end)",
+        "scores": {
+          "P01":1,"P02":2,"P03":1,"P04":1,"P05":0,"P06":2,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":1,"C02":1,"C03":0,"C04":1,"C05":1,"C06":1,"C07":0,"C08":0,"C09":1,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":1,"S02":0,"S03":0,"S04":0,"S05":1,
+          "X01":1,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "Highest overall AGI score (22%). Helix enables novel object generalization and two-robot collaboration. 11-month BMW deployment: 90,000+ parts, 1,250+ runtime hours. BotQ facility: 12,000 units/year capacity. Dropped OpenAI partnership Feb 2025 in favor of full vertical integration."
+      },
+      "tesla_optimus": {
+        "name": "Tesla Optimus Gen 2/3",
+        "organization": "Tesla / xAI",
+        "type": "AI-Integrated Humanoid Robot",
+        "released": "2024-ongoing",
+        "ai_stack": "FSD-derived neural net + Grok LLM (xAI) for conversational interface",
+        "scores": {
+          "P01":1,"P02":1,"P03":1,"P04":1,"P05":0,"P06":1,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":1,"C02":0,"C03":0,"C04":0,"C05":0,"C06":0,"C07":0,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":1,"S02":0,"S03":0,"S04":0,"S05":0,
+          "X01":0,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "Q4 2025 earnings: Musk acknowledged no Optimus doing useful factory work. Gen 3 refers to upgraded 22-DoF hands only; body unchanged from Gen 2. Target $20-30K at scale. Vision-only (no LiDAR). Significant gap between announced and actual capability."
+      },
+      "1x_neo": {
+        "name": "1X NEO",
+        "organization": "1X Technologies (OpenAI-backed)",
+        "type": "AI-Integrated Humanoid Robot",
+        "released": "2025-2026",
+        "ai_stack": "Proprietary; teleoperation-to-autonomy developmental learning approach",
+        "scores": {
+          "P01":2,"P02":1,"P03":1,"P04":1,"P05":0,"P06":1,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":1,"C02":1,"C03":0,"C04":1,"C05":0,"C06":0,"C07":0,"C08":0,"C09":1,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":1,"S02":0,"S03":0,"S04":0,"S05":1,
+          "X01":1,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "First home delivery $20K / $499 per month. Lightweight, quiet electric actuation. Learns household tasks through human guidance and repetition. Reported 22 km/h run speed. Developmental learning model is architecturally notable."
+      },
+      "sanctuary_phoenix": {
+        "name": "Sanctuary Phoenix Gen 8",
+        "organization": "Sanctuary AI",
+        "type": "AI-Integrated Humanoid Robot",
+        "released": "2025",
+        "ai_stack": "Carbon AI — symbolic reasoning + reinforcement learning hybrid",
+        "scores": {
+          "P01":1,"P02":2,"P03":2,"P04":1,"P05":0,"P06":1,"P07":0,"P08":0,"P09":1,"P10":1,
+          "C01":1,"C02":1,"C03":0,"C04":0,"C05":0,"C06":0,"C07":0,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":1,"S02":0,"S03":0,"S04":0,"S05":0,
+          "X01":0,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "Only company with explicit AGI as stated target. Tactile sensors detect 5mN force (human fingertip: ~3mN) — within 40% of human touch sensitivity. $140M total funding vs competitors with billions. Magna International partnership. Leadership instability 2025."
+      }
+    },
+    "physical_robots": {
+      "boston_dynamics_atlas": {
+        "name": "Boston Dynamics Atlas (Electric)",
+        "organization": "Boston Dynamics / Hyundai",
+        "type": "Research / Industrial Humanoid",
+        "released": "2024",
+        "ai_stack": "Proprietary whole-body control; Google DeepMind research partnership",
+        "scores": {
+          "P01":2,"P02":1,"P03":1,"P04":0,"P05":0,"P06":1,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":0,"C02":0,"C03":0,"C04":0,"C05":0,"C06":0,"C07":0,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":0,"S02":0,"S03":0,"S04":0,"S05":0,
+          "X01":0,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "Best-in-class dynamic locomotion: 2.5 m/s sprint, backflips, parkour. 89kg, 28 DoF, LiDAR + stereo vision. Deployed Hyundai Georgia Metaplant 2026. Fully allocated production. ~$140-150K estimated if commercialized. No cognitive stack."
+      },
+      "unitree_h1": {
+        "name": "Unitree H1",
+        "organization": "Unitree Robotics (China)",
+        "type": "Research / Development Humanoid",
+        "released": "2024",
+        "ai_stack": "Open platform; motion-first philosophy",
+        "scores": {
+          "P01":2,"P02":1,"P03":1,"P04":0,"P05":0,"P06":1,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":0,"C02":0,"C03":0,"C04":0,"C05":0,"C06":0,"C07":0,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":0,"S02":0,"S03":0,"S04":0,"S05":0,
+          "X01":0,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "3.3 m/s — fastest humanoid on record. $90K. Open SDK. ByteDance/Alibaba/Tencent backed, unicorn status June 2025 at $1.3B valuation. 150+ patents. Motion-first design philosophy prioritizes locomotion over cognition."
+      },
+      "agility_digit": {
+        "name": "Agility Digit",
+        "organization": "Agility Robotics",
+        "type": "Commercial Logistics Humanoid",
+        "released": "2023-2024",
+        "ai_stack": "Proprietary; warehouse-task specialized",
+        "scores": {
+          "P01":1,"P02":1,"P03":1,"P04":0,"P05":0,"P06":2,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":0,"C02":0,"C03":0,"C04":1,"C05":0,"C06":0,"C07":0,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":0,"S02":0,"S03":0,"S04":0,"S05":0,
+          "X01":0,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "Proven commercial deployment at Amazon. 4:1 work-to-charge ratio (4 min work per 1 min charge). Battery swap in <2 min enables extended shifts. ~$250K pilot pricing. Narrow task scope. Most reliable industrial humanoid currently operating."
+      },
+      "apptronik_apollo": {
+        "name": "Apptronik Apollo",
+        "organization": "Apptronik",
+        "type": "Industrial Humanoid",
+        "released": "2024-2025",
+        "ai_stack": "Force-control based; NASA Valkyrie heritage",
+        "scores": {
+          "P01":1,"P02":1,"P03":1,"P04":0,"P05":0,"P06":2,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":0,"C02":0,"C03":0,"C04":0,"C05":0,"C06":0,"C07":0,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":0,"E05":0,"E06":0,
+          "S01":0,"S02":0,"S03":0,"S04":0,"S05":0,
+          "X01":0,"X02":0,"X03":0,"X04":0,"X05":0,"X06":0,"X07":0
+        },
+        "notes": "$403M raised 2025. Force control (not position control) enables adaptive contact and safer human collaboration. Modular swappable battery. University of Texas / NASA heritage. Targets logistics, manufacturing, retail. Sub-$50K target at scale."
+      }
+    },
+    "social_robots": {
+      "ameca": {
+        "name": "Ameca",
+        "organization": "Engineered Arts (UK/US)",
+        "type": "Social / HRI Robot",
+        "released": "2021-ongoing",
+        "ai_stack": "Tritium OS + GPT integration; cloud-based",
+        "scores": {
+          "P01":0,"P02":1,"P03":1,"P04":1,"P05":2,"P06":0,"P07":0,"P08":0,"P09":0,"P10":1,
+          "C01":1,"C02":1,"C03":0,"C04":0,"C05":1,"C06":1,"C07":1,"C08":0,"C09":0,"C10":0,
+          "E01":0,"E02":0,"E03":0,"E04":1,"E05":0,"E06":0,
+          "S01":1,"S02":0,"S03":0,"S04":0,"S05":1,
+          "X01":1,"X02":1,"X03":0,"X04":0,"X05":1,"X06":0,"X07":0
+        },
+        "notes": "61 DoF total, 27 DoF facial. 50+ pre-programmed facial expressions. Cannot walk. GPT-integrated conversation. Deployed in schools, museums, eldercare, conferences globally. Best facial expression capability of any evaluated system — but scripted, not genuine internal states. Stationary platform."
+      }
+    }
+  }
+}
