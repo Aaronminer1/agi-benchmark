@@ -74,7 +74,32 @@ The last criterion is the hardest test and the most diagnostic. A system that ce
 
 The field's "do we have AGI yet?" debate argues past itself: those saying yes are pointing at Type 1 (which genuinely exists); those saying no are pointing at Type 5 (which genuinely doesn't). Both are correct. They are describing different things with the same word.
 
+**A note on non-sequential pillar acquisition.** The numbered types imply a progression, but pillars do not have to be acquired in order. Several AI-integrated humanoid robot companies (Figure AI, 1X Technologies, Sanctuary AI) have achieved both the cognitive and physical pillars without the motivational pillar — placing them in a genuinely distinct position that the linear sequence does not cleanly capture. They have two pillars; they have different pillars than a hypothetical Type 2 system. The taxonomy's sequencing reflects a *dependency argument* (motivation is what makes embodiment matter) rather than a strict logical requirement. Where a system's combination of pillars does not align with any numbered type, it is described as a **multi-pillar AGI** with the achieved pillars named explicitly.
+
 For full derivation of each type, see [docs/definition.md](docs/definition.md).
+
+### 2.5 Provider AGI Status — Achieved Pillars (Q1 2026)
+
+| Provider | Cognitive | Motivational | Physical | Emotional | Existential | Status |
+|---|:---:|:---:|:---:|:---:|:---:|---|
+| Anthropic | ✓ | — | — | — | — | Cognitive Reactive AGI |
+| OpenAI | ✓ | — | — | — | — | Cognitive Reactive AGI |
+| Google DeepMind | ✓ | — | — | — | — | Cognitive Reactive AGI |
+| xAI | ✓ | — | — | — | — | Cognitive Reactive AGI |
+| DeepSeek | ✓ | — | — | — | — | Cognitive Reactive AGI |
+| Engineered Arts | ✓ | — | ~ | — | — | Cognitive Reactive AGI (partial physical) |
+| Figure AI | ✓ | — | ✓ | — | — | **2-Pillar AGI** (Cognitive + Physical) |
+| 1X Technologies | ✓ | — | ✓ | — | — | **2-Pillar AGI** (Cognitive + Physical) |
+| Sanctuary AI | ✓ | — | ✓ | — | — | **2-Pillar AGI** (Cognitive + Physical) |
+| Tesla | ~ | — | ~ | — | — | Pre-AGI (partial cognitive + partial physical) |
+| Boston Dynamics | — | — | ✓ | — | — | Physical pillar only |
+| Agility Robotics | — | — | ~ | — | — | Physical pillar (partial) |
+| Apptronik | — | — | ~ | — | — | Physical pillar (partial) |
+| Unitree Robotics | — | — | ~ | — | — | Physical pillar (partial) |
+
+**Key:** ✓ Achieved · ~ Partial · — Absent
+
+No provider has achieved the motivational pillar. It is the single most consequential gap separating every system in this table from Type 2.
 
 ---
 
@@ -228,17 +253,25 @@ Not one evaluated system generates goal-directed behavior from internal drives. 
 
 ---
 
-## 6. The Closest Organization to AGI Development
+## 6. The Closest Organizations to AGI Development
 
-Evaluated by breadth of capability across all five pillars and stated architectural intent, the organizations with the most complete paths toward AGI-relevant research are:
+Evaluated by pillar count, integration depth, and stated architectural intent:
 
-1. **Google DeepMind** — the only organization with frontier cognitive AI (Gemini) and serious physical robotics research (Atlas partnership, Agile Robots partnership) under one roof. Not explicitly targeting the full AGI definition, but architecturally positioned for integration.
+**2-Pillar AGI providers (Cognitive + Physical):**
 
-2. **Figure AI** — the only commercial robotics company with an explicit end-to-end integrated AI-physical architecture (Helix VLA) and stated intent to reach home environments and general-purpose capability. Closest to meaningful physical-cognitive integration in deployed hardware.
+1. **Figure AI** — achieved genuine physical-cognitive integration via the Helix end-to-end VLA architecture. Highest overall benchmark score (22%). Closest to Type 3 of any deployed system, lacking only the motivational pillar.
 
-3. **Sanctuary AI** — the only company that explicitly names AGI as its target and defines it in terms that approach the complete definition. Underfunded relative to its ambition.
+2. **1X Technologies** — home deployment underway; genuine cognitive-physical integration with OpenAI-backed architecture. Strong bilateral pillar achievement.
 
-**Critical caveat:** None of these organizations is building AGI by the definition proposed here. The motivational architecture, genuine emotional depth, and existential independence that would constitute a synthetic mind are absent from every roadmap, every research program, and every deployment plan currently public. The field is building increasingly capable tools and calling them AGI candidates.
+3. **Sanctuary AI** — the only company that explicitly names AGI as its target using a definition that approaches the complete five-pillar framing. Underfunded relative to its ambition. Touch sensitivity within 40% of human.
+
+**Cognitive Reactive AGI providers (Cognitive pillar only):**
+
+4. **Google DeepMind** — the only organization with frontier cognitive AI *and* serious physical robotics research under one roof. Not yet integrated into a single system, but architecturally positioned for it.
+
+5. **Anthropic, OpenAI, xAI, DeepSeek** — frontier cognitive pillar. No physical, motivational, or emotional architecture in any deployed system.
+
+**Critical caveat:** No organization is building AGI by the definition proposed here. The motivational architecture, genuine emotional depth, and existential independence that would constitute a synthetic mind are absent from every roadmap, every research program, and every deployment plan currently public. The 2-pillar providers are closer than the 1-pillar providers. Neither is close.
 
 ---
 
