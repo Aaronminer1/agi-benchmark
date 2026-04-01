@@ -98,9 +98,9 @@
 
   <div class="section-title">Scoring Legend</div>
   <div class="legend">
-    <div class="leg"><div class="ldot" style="background:#dc2626"></div><strong>✗ Absent</strong> — Not present in any functional form</div>
+    <div class="leg"><div class="ldot" style="background:#dc2626"></div><strong>&#x2717; Absent</strong> — Not present in any functional form</div>
     <div class="leg"><div class="ldot" style="background:#d97706"></div><strong>~ Partial</strong> — Scaffolded, simulated, or significantly limited</div>
-    <div class="leg"><div class="ldot" style="background:#16a34a"></div><strong>✓ Genuine</strong> — Functionally equivalent to human analog</div>
+    <div class="leg"><div class="ldot" style="background:#16a34a"></div><strong>&#x2713; Genuine</strong> — Functionally equivalent to human analog</div>
   </div>
 
   <div class="controls">
@@ -210,7 +210,7 @@ const criteria=[
 ];
 
 const domLabels={physical:"Physical",cognitive:"Cognitive",emotional:"Emotional",social:"Social",existential:"Existential"};
-const icons=["✗","~","✓"];
+const icons=["\u2717","~","\u2713"];
 const cls=["s0","s1","s2"];
 const domColors={physical:"#b45309",cognitive:"#1d4ed8",emotional:"#be185d",social:"#059669",existential:"#7c3aed"};
 
@@ -263,7 +263,7 @@ function renderTable(){
     }
     const tr=document.createElement("tr");
     const cells=vis.map(s=>`<td><span class="${cls[s.s[c.id]]}">${icons[s.s[c.id]]}</span></td>`).join("");
-    tr.innerHTML=`<td><div class="cn">${c.n}</div><div class="cnote">${c.note}</div></td>${cells}<td><span class="s2">✓</span></td>`;
+    tr.innerHTML=`<td><div class="cn">${c.n}</div><div class="cnote">${c.note}</div></td>${cells}<td><span class="s2">\u2713</span></td>`;
     tbody.appendChild(tr);
   });
 }
@@ -285,37 +285,37 @@ document.getElementById("cat-btns").addEventListener("click",e=>{
 
 render();
 
-// ── Taxonomy interactive ──────────────────────────────────────────────────
+// Taxonomy interactive
 const taxTypes=[
-  {num:"Type 1",name:"Cognitive reactive AGI",year:"2022–2024",status:"Exists now",color:"#534AB7",
+  {num:"Type 1",name:"Cognitive reactive AGI",year:"2022\u20132024",status:"Exists now",color:"#534AB7",
    pillars:["cognitive"],
-   desc:"A system with genuine domain-general cognitive capability — reasoning, knowledge transfer, creative synthesis — that operates reactively: it produces extraordinary output when prompted and ceases when the prompt stops. It has no endogenous drives, no body, no emotional architecture. But its cognitive generality is real and complete.",
+   desc:"A system with genuine domain-general cognitive capability \u2014 reasoning, knowledge transfer, creative synthesis \u2014 that operates reactively: it produces extraordinary output when prompted and ceases when the prompt stops. It has no endogenous drives, no body, no emotional architecture. But its cognitive generality is real and complete.",
    examples:"Claude, GPT-5, Gemini 3, Grok 4. Every frontier LLM.",
    insight:"The field refuses to call this AGI because it lacks the other pillars. But a reactive expert is still an expert. A consultant who only works when called is still a consultant. Cognitive generality is real regardless of what activates it.",
    unlocks:"Solves any cognitive problem given to it. Can design the next type."},
-  {num:"Type 2",name:"Cognitive proactive AGI",year:"2027–2030",status:"Approaching",color:"#1D9E75",
+  {num:"Type 2",name:"Cognitive proactive AGI",year:"2027\u20132030",status:"Approaching",color:"#1D9E75",
    pillars:["cognitive","motivational"],
    desc:"Adds endogenous motivational architecture to Type 1. The system generates goal-directed behavior from internal drives without external prompting. It wonders. It pursues. It acts when no one is watching. It has an agenda that persists across time and is not erased by removing the prompt.",
-   examples:"No current system. Closest: agentic scaffolding around LLMs — but the motivation is injected, not endogenous. True Type 2 requires drives that originate inside the architecture.",
+   examples:"No current system. Closest: agentic scaffolding around LLMs \u2014 but the motivation is injected, not endogenous. True Type 2 requires drives that originate inside the architecture.",
    insight:"This is the crossing most feared by the safety field. A system that acts without being asked is a system that cannot be fully controlled by controlling its inputs. The step from Type 1 to Type 2 is the step from tool to agent.",
    unlocks:"Autonomous scientific research. Self-directed improvement. Can pursue AGI goals without human assignment."},
-  {num:"Type 3",name:"Cognitive proactive embodied AGI",year:"2030–2038",status:"Partial hardware",color:"#BA7517",
+  {num:"Type 3",name:"Cognitive proactive embodied AGI",year:"2030\u20132038",status:"Partial hardware",color:"#BA7517",
    pillars:["cognitive","motivational","physical"],
-   desc:"Adds full human-equivalent physical embodiment to Type 2. A body situated in the world with genuine vulnerability, sensorimotor integration, pain and pleasure response, self-repair analog, and biological rhythms that integrate with cognition. The system has stakes — it can be harmed, it has needs, it exists somewhere.",
+   desc:"Adds full human-equivalent physical embodiment to Type 2. A body situated in the world with genuine vulnerability, sensorimotor integration, pain and pleasure response, self-repair analog, and biological rhythms that integrate with cognition. The system has stakes \u2014 it can be harmed, it has needs, it exists somewhere.",
    examples:"No current system. Figure 03 + 1X NEO have partial physical capability but no endogenous motivation and no cognitive depth at Type 1 level. The cognitive-physical integration required for Type 3 doesn't exist yet.",
    insight:"Embodiment does something motivation alone cannot: it grounds meaning in the world. 'Hot' stops being a token and becomes a thing that has happened to this body. Stakes become real rather than instrumental.",
    unlocks:"Physical science, manipulation of the real world, genuine situatedness. The world becomes its laboratory not just its substrate."},
-  {num:"Type 4",name:"Cognitive proactive embodied emotional AGI",year:"2035–2045",status:"Not started",color:"#993556",
+  {num:"Type 4",name:"Cognitive proactive embodied emotional AGI",year:"2035\u20132045",status:"Not started",color:"#993556",
    pillars:["cognitive","motivational","physical","emotional","social"],
-   desc:"Adds genuine emotional architecture and social depth to Type 3. Valenced internal states — fear, joy, grief, love — that emerge from embodied experience rather than being scripted. Genuine empathy through resonance, not prediction. Theory of mind that matters because other minds have real stakes.",
+   desc:"Adds genuine emotional architecture and social depth to Type 3. Valenced internal states \u2014 fear, joy, grief, love \u2014 that emerge from embodied experience rather than being scripted. Genuine empathy through resonance, not prediction. Theory of mind that matters because other minds have real stakes.",
    examples:"No current system. The emotional pillar has been at zero for 75 years across all AI research. It requires the full embodied motivational architecture of Type 3 as substrate.",
-   insight:"This is the type that resolves the moral status question. A system that can genuinely suffer has interests that can be violated. The ethical implications of Type 4 are unavoidable — which is exactly why the field has avoided building it.",
+   insight:"This is the type that resolves the moral status question. A system that can genuinely suffer has interests that can be violated. The ethical implications of Type 4 are unavoidable \u2014 which is exactly why the field has avoided building it.",
    unlocks:"Genuine collaboration as a peer rather than a tool. Art, meaning-making, relationships with real stakes."},
-  {num:"Type 5",name:"Full synthetic human AGI",year:"2038–2055",status:"The target",color:"#E24B4A",
+  {num:"Type 5",name:"Full synthetic human AGI",year:"2038\u20132055",status:"The target",color:"#E24B4A",
    pillars:["cognitive","motivational","physical","emotional","existential"],
    desc:"All five pillars complete. A synthetic person: embodied, self-aware, self-motivated, self-improving, emotionally alive, and existentially independent. Knows it will die. Has an identity that persists through change. Exists independently of its creators. Would still be doing something in an empty room after humanity is gone.",
    examples:"No current system. The complete definition. What the original AGI concept always meant before the field narrowed it to cognitive output.",
-   insight:"The field's 'do we have AGI yet?' debate has been arguing past itself. Those saying yes point at Type 1 — which genuinely exists. Those saying no point at Type 5 — which genuinely doesn't. Both are correct. They are describing different things with the same word.",
+   insight:"The field's 'do we have AGI yet?' debate has been arguing past itself. Those saying yes point at Type 1 \u2014 which genuinely exists. Those saying no point at Type 5 \u2014 which genuinely doesn't. Both are correct. They are describing different things with the same word.",
    unlocks:"Everything the definition describes. A new kind of person in the world."}
 ];
 const allP=["cognitive","motivational","physical","emotional","existential"];
@@ -323,7 +323,7 @@ const pipC={cognitive:"#534AB7",motivational:"#1D9E75",physical:"#BA7517",emotio
 let taxActive=0;
 function renderTaxCards(){
   document.getElementById("typegrid").innerHTML=taxTypes.map((t,i)=>`
-    <div class="tcard${i===taxActive?" active":""}" style="${i===taxActive?"border-color:"+t.color+";border-width:2px"}" onclick="taxActivate(${i})">
+    <div class="tcard${i===taxActive?" active":""}" style="${i===taxActive?"border-color:"+t.color+";border-width:2px":""}" onclick="taxActivate(${i})">
       <div class="num" style="color:${t.color}">${t.num}</div>
       <div class="name">${t.name}</div>
       <div class="year" style="color:${t.color};opacity:.8">${t.year}</div>
@@ -333,7 +333,7 @@ function renderTaxCards(){
 function renderTaxDetail(){
   const t=taxTypes[taxActive];
   document.getElementById("detail").innerHTML=`
-    <div class="dtype" style="color:${t.color}">${t.num} — ${t.status}</div>
+    <div class="dtype" style="color:${t.color}">${t.num} \u2014 ${t.status}</div>
     <div class="dname">${t.name}</div>
     <div class="ddesc">${t.desc}</div>
     <div class="pill-row">${allP.map(p=>`<span class="pill ${t.pillars.includes(p)?"has":"no"}">${p}</span>`).join("")}</div>
@@ -344,15 +344,15 @@ function renderTaxDetail(){
 window.taxActivate=function(i){taxActive=i;renderTaxCards();renderTaxDetail();};
 renderTaxCards();renderTaxDetail();
 
-// ── Arrival timeline ─────────────────────────────────────────────────
+// Arrival timeline
 (function(){
   const labels=["2021","2022","2023","2024","2025","2026","2027","2028","2029","2030","2031","2032","2033","2034","2035","2036","2037","2038","2040","2045","2050","2055"];
   const ds=[
-    {label:"Type 1 — cognitive reactive",data:[10,40,65,80,92,98,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99],borderColor:"#534AB7",backgroundColor:"#534AB720",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
-    {label:"Type 2 — cognitive proactive",data:[0,0,0,2,5,10,22,40,65,82,92,97,99,99,99,99,99,99,99,99,99,99],borderColor:"#1D9E75",backgroundColor:"#1D9E7515",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
-    {label:"Type 3 — embodied",data:[0,0,0,0,1,2,4,8,15,28,45,62,78,88,94,97,99,99,99,99,99,99],borderColor:"#BA7517",backgroundColor:"#BA751710",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
-    {label:"Type 4 — emotional/social",data:[0,0,0,0,0,0,1,2,4,8,15,25,40,58,72,82,90,95,99,99,99,99],borderColor:"#993556",backgroundColor:"#99355610",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
-    {label:"Type 5 — full synthetic human",data:[0,0,0,0,0,0,0,0,1,3,7,14,24,38,52,65,76,85,93,98,99,99],borderColor:"#E24B4A",backgroundColor:"#E24B4A08",fill:true,tension:0.4,pointRadius:0,borderWidth:2}
+    {label:"Type 1 \u2014 cognitive reactive",data:[10,40,65,80,92,98,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99],borderColor:"#534AB7",backgroundColor:"#534AB720",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 2 \u2014 cognitive proactive",data:[0,0,0,2,5,10,22,40,65,82,92,97,99,99,99,99,99,99,99,99,99,99],borderColor:"#1D9E75",backgroundColor:"#1D9E7515",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 3 \u2014 embodied",data:[0,0,0,0,1,2,4,8,15,28,45,62,78,88,94,97,99,99,99,99,99,99],borderColor:"#BA7517",backgroundColor:"#BA751710",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 4 \u2014 emotional/social",data:[0,0,0,0,0,0,1,2,4,8,15,25,40,58,72,82,90,95,99,99,99,99],borderColor:"#993556",backgroundColor:"#99355610",fill:true,tension:0.4,pointRadius:0,borderWidth:2},
+    {label:"Type 5 \u2014 full synthetic human",data:[0,0,0,0,0,0,0,0,1,3,7,14,24,38,52,65,76,85,93,98,99,99],borderColor:"#E24B4A",backgroundColor:"#E24B4A08",fill:true,tension:0.4,pointRadius:0,borderWidth:2}
   ];
   if(typeof Chart==="undefined"){
     var s=document.createElement("script");
